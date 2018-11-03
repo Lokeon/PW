@@ -21,6 +21,6 @@
 session_start();
 session_destroy();
 
-header("refresh:10 ;url:../index.php");
+    header("location:index.php");
 
 ?>
