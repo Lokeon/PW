@@ -1,3 +1,10 @@
+<?PHP
+
+session_start();
+session_destroy();
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,13 +21,8 @@
 </div>
     </div>
 </div>
+<script>
+setTimeout(function () { window.location.href= '../index.php'; }, 2000);
+</script>
 </body>
 </html>
-<?PHP
-
-session_start();
-session_destroy();
-
-    header("location:index.php");
-
-?>
