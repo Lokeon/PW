@@ -16,6 +16,9 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
             SELECT id_preguntas FROM TIPOENCUESTA WHERE id_tipoencuesta = :tipoen)";
 
         $pregs = getArrayQuery($conexion, $query, array(array(":tipoen"), array($_SESSION['encuesta'])))[0];
+        if (empty($pregs)) {
+            header("location:borrarpreguntas.php");
+        }
     } catch (Exception $e) {
         exit("error" . $e->getMessage());
     }
@@ -30,24 +33,17 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
 </head>
 <body>
 <div class="container">
-<form action="enviarpreg.php?index=<?php print($_SESSION['encuesta']); ?>" method="post">
+<form action="enviarbopreg.php?index=<?PHP print($_SESSION['encuesta']); ?>" method="post">
 <div class="field">
   <label class="label">Seleccione Pregunta</label>
   <div class="control">
     <div class="select">
       <select name="pregunta">
       <?php for ($j = 1; $j < count($pregs) && $pregs[$j] != ""; $j++) {
-        print("<option value='$j'>$pregs[$j]</option>\n");
+        print("<option value='$j-$pregs[$j]'>$pregs[$j]</option>\n");
     } ?>
       </select>
     </div>
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Nueva pregunta</label>
-  <div class="control">
-    <textarea class="textarea" placeholder="Textarea" name="nuevapreg" ></textarea>
   </div>
 </div>
 <div class="field is-grouped">
@@ -66,3 +62,4 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
 } else {
     header("location:../login/login.php");
 }
+?>

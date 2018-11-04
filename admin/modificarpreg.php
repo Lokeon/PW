@@ -16,6 +16,9 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
             SELECT id_preguntas FROM TIPOENCUESTA WHERE id_tipoencuesta = :tipoen)";
 
         $pregs = getArrayQuery($conexion, $query, array(array(":tipoen"), array($_SESSION['encuesta'])))[0];
+        if (empty($pregs)) {
+            header("location:modificarpreguntas.php");
+        }
     } catch (Exception $e) {
         exit("error" . $e->getMessage());
     }

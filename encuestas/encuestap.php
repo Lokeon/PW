@@ -43,7 +43,7 @@ if (isset($_SESSION['tipoencuesta'])) {
 for ($i = 1; $i < count($pregs); ++$i) {
         print("<div class=\"col-sm-12\">\n<h4> $pregs[$i] </h4>");
         for ($j = 1; $j < count($opc); ++$j) {
-            print("<label><INPUT TYPE='radio' NAME='radio$i' VALUE='$j'>$opc[$j]</label>");
+            print("<label><INPUT TYPE='radio' NAME='radio$i' VALUE='" . ($j - 1) . "'>$opc[$j]</label>");
         }
         print("</div>");
     }
