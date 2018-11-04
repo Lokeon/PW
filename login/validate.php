@@ -19,7 +19,7 @@ try {
             $_SESSION['user'] = $user;
             header("location:../admin/admin.php");
         } else {
-            header("location:login.php?error=usuario y/o contraseña inconrrectos");
+            header("location:login.php?error=usuario y/o contraseña incorrectos.");
         }
     } else {
         header("location:login.php?warning=usuario y/o contraseña vacios.");

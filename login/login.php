@@ -4,41 +4,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../static/mini-nord.css">
+  <link rel="stylesheet" href="../static/bulma.min.css">
   <title>Login</title>
 </head>
 <body>
-  <div class="container">
-    <div class="row">
-      <div class="card" style="margin: auto;">
-        <form action="validate.php" method="post">
-          <fieldset>
-            <legend>Inicio de Sesión</legend>
-            <div class="input-group">
-              <label for="username">Usuario</label>
-              <input type="text" name="user" placeholder="User" />
-              <label for="password">Contraseña</label>
-              <input type="password" name="pass" placeholder="Pass" />
-              <input type="submit" value="Iniciar" class="primary rounded" />
+<section class="hero has-background-light is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-grey">Inicio de Sesion</h3>
+                    <div class="box">
+                        <form action="validate.php" method="post">
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="text" placeholder="Usuario" autofocus="" name="user">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="password" placeholder="Contraseña" name="pass">
+                                </div>
+                            </div>
+                            <?php if (isset($_GET['error'])): ?>
+                            <div class="notification is-danger has-text-grey-dark">
+                            <p><strong><?php print($_GET['error']) ?></strong></p>
+                            </div>
+                            <?php endif;if (isset($_GET['warning'])): ?>
+                            <div class="notification is-warning has-text-grey-dark">
+                            <p><strong><?php print($_GET['warning']) ?></strong></p>
+                            </div>
+                            <?php endif; ?>
+                            <button class="button is-block is-info is-large is-fullwidth">Iniciar</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-          </fieldset>
-        </form>
-        <?php if (@$_GET['error'] == true): ?>
-        <div class="card error">
-          <p><span class="icon-alert"></span>
-            <?php print($_GET['error']) ?>
-          </p>
         </div>
-        <?php endif;if (@$_GET['warning'] == true): ?>
-        <div class="card warning">
-          <p><span class="icon-alert"></span>
-            <?php print($_GET['warning']) ?>
-          </p>
-        </div>
-        <?php endif; ?>
-      </div>
-    </div>
-  </div>
+    </section>
 </body>
 </html>
 <?php else:header("location:../admin/admin.php");endif; ?>

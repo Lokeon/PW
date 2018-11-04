@@ -1,10 +1,7 @@
-<?PHP
-
+<?php
 session_start();
 session_destroy();
-
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,13 +13,15 @@ session_destroy();
 <body>
 <div class="container">
     <div class="row">
-<div class="card">
+<div class="card"  style="margin: auto;">
 <span>GRACIAS POR REALIZAR LA CONSULTA</span>
 </div>
     </div>
 </div>
 <script>
-setTimeout(function () { window.location.href= '../index.php'; }, 2000);
+setTimeout(function () {
+   window.location.href= '/';
+}, 2000);
 </script>
 </body>
 </html>
