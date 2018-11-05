@@ -35,7 +35,7 @@
               <p class="title has-text-centered">Modificar Preguntas</p>
               <p class="subtitle has-text-centered">Modificar las posibles preguntas</p>
               <p>
-                <a href="../admin/modificarpreguntas.php">Adminsitrar</a>
+                <a href="../admin/modificarpreguntas.php">Administrar</a>
               </p>
             </article>
           </div>
@@ -57,7 +57,7 @@
               <p>
                 <a href="../admin/insertartipoencuesta.php">Administrar</a>
               </p>
-            </article>
+          </article>
           </div>
           <div class="tile is-parent is-shady">
             <article class="tile is-child notification is-white">
@@ -65,6 +65,24 @@
               <p class="subtitle has-text-centered">Ver las estadisticas de todas las encuestas realizadas</p>
               <p>
                 <a href="../estadisticas/estadisticas.php">Acceder a estadísticas</a>
+              </p>
+            </article>
+          </div>
+          <div class="tile is-parent is-shady">
+            <article class="tile is-child notification is-white">
+              <p class="title has-text-centered">Insertar Opciones Preguntas</p>
+              <p class="subtitle has-text-centered">Insertar un nuevo grupo de opciones</p>
+              <p>
+                <a href="../admin/insertaropciones.php">Administrar</a>
+              </p>
+            </article>
+        </div>
+        <div class="tile is-parent is-shady">
+            <article class="tile is-child notification is-white">
+              <p class="title has-text-centered">Insertar Estudio</p>
+              <p class="subtitle has-text-centered">Insertar un nuevo estudio</p>
+              <p>
+                <a href="../admin/insertarestudio.php">Administrar</a>
               </p>
             </article>
           </div>

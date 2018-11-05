@@ -41,11 +41,11 @@ try {
                 <div class="column is-4 is-offset-4">
                     <?php if (isset($_SESSION['tipoencuesta'])) { ?>
                     <form action="#" method="post">
-                        <fieldset>
+                        <div class="box">
                             <h3 class="title has-text-centered has-text-grey">Seleccione Encuesta</h3>
                                 <div class="field">
                                     <label class="label">Profesor</label>
-                                    <div class="control">
+                                    <div class="control has-text-centered">
                                         <div class="select">
                                             <select id="profesor" name="profesor">
                                                 <?php foreach ($prof as $p) {print("<option>" . $p[0] . "</option>\n");} ?>
@@ -53,17 +53,18 @@ try {
                                         </div>
                                     </div>
                                     <label class="label">Asignatura</label>
-                                    <div class="control">
+                                    <div class="control has-text-centered">
                                         <div class="select">
                                             <select id="asignatura" name="asignatura">
                                                 <?php foreach ($asig as $a) {print("<option>" . $a[0] . "</option>\n");} ?>
                                             </select>
                                         </div>
                                     </div>
-                                    <input type="submit" value="Empezar" class="button is-link" name="empezar" />
+                                    <br>
                                     <input type="submit" value="Atras" class="button is-link" name="atras" />
+                                    <input type="submit" value="Empezar" class="button is-link" name="empezar" />
                                 </div>
-                        </fieldset>
+                        </div>
                     </form>
 
                     <?php if (isset($_GET['error'])): ?>
@@ -75,11 +76,11 @@ try {
                     <?php endif; ?>
                     <?php } else { ?>
                     <form action="#" method="post">
-                        <fieldset>
+                        <div class="box">
                             <h3 class="title has-text-centered has-text-grey">Seleccione Ciudad</h3>
                                 <div class="field">
                                     <label class="label">Ciudad</label>
-                                    <div class="control">
+                                    <div class="control has-text-centered">
                                         <div class="select">
                                             <select id="ciudad" name="ciudad">
                                                 <?php foreach ($ciudades as $c) {print("<option>" . $c[0] . "</option>\n");} ?>
@@ -87,8 +88,9 @@ try {
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" value="Siguiente" class="primary rounded" name="encuesta" />
-                        </fieldset>
+                                <a class="button is-link" href="../index.php"><b>Atras</b></a>
+                                <input type="submit" value="Siguiente" class="button is-link" name="encuesta"/>
+                        </div>
                     </form>
                         <?php if (isset($_GET['error'])): ?>
                         <div class="card warning">

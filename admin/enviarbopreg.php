@@ -3,7 +3,7 @@ require "funciones.php";
 $db = include "../config/db.php";
 
 session_start();
-if (isset($_SESSION['user']) && isset($_POST['pregunta']) && !empty(($_POST['pregunta']))) {
+if (isset($_SESSION['user']) && isset($_POST['pregunta']) && !empty(($_POST['pregunta'])) && !isset($_POST['atras'])) {
     try {
         $conexion = new PDO("mysql:host=" . $db['host'] . "; dbname=" . $db['name'], $db['user'], $db['pass']);
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

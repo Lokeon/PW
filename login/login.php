@@ -11,8 +11,8 @@
 <section class="hero has-background-light is-fullheight">
         <div class="hero-body">
             <div class="container has-text-centered">
+                <h3 class="title has-text-grey">Inicio de Sesion</h3>
                 <div class="column is-4 is-offset-4">
-                    <h3 class="title has-text-grey">Inicio de Sesion</h3>
                     <div class="box">
                         <form action="validate.php" method="post">
                             <div class="field">
@@ -36,9 +36,9 @@
                                     <p><strong><?php print($_GET['warning']) ?></strong></p>
                                 </div>
                             <?php endif; ?>
-                            <button class="button is-block is-info is-large is-fullwidth">Iniciar</button>
+                            <button class="button is-block is-info is-large is-fullwidth">Iniciar Sesión</button>
                             <br>
-                            <a class="button is-block is-info is-large is-fullwidth" href="../index.php">Atras</a>
+                            <a class="button is-block is-info is-large is-fullwidth" href="../index.php"><b>Atras</b></a>
                         </form>
                     </div>
                 </div>
