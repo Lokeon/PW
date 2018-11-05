@@ -17,26 +17,28 @@ if (isset($_SESSION['user'])) {
         exit("error" . $e->getMessage());
     }
     ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Modifica Preguntas Generales</title>
+    <title>Modificar Preguntas Personales</title>
 </head>
 <body>
-<div class="container">
-<table class="hoverable">
-  <caption>Modificar Preguntas Generales</caption>
-  <thead>
-    <tr>
-      <th>Tipo De Encuesta</th>
-      <th>Preguntas Generales</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php for ($i = 0; $i < count($tipos); $i++) {
+<div class="hero-body">
+    <div class="container">
+        <table class="hoverable">
+            <h2 class="title">Modificar Preguntas Personales</h2>
+            <thead>
+                <tr>
+                <th>Tipo De Encuesta</th>
+                <th>Preguntas Generales</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php for ($i = 0; $i < count($tipos); $i++) {
         print("<tr>");
         print("<td data-label=\"Tipo Encuesta\">{$tipos[$i][count($tipos[$i]) - 1]}</td>");
         print("<td data-label=\"Preguntas Generales\">");
@@ -46,8 +48,8 @@ if (isset($_SESSION['user'])) {
         }
         print("</ol></td></tr>");
     } ?>
-  </tbody>
-</table>
+            </tbody>
+        </table>
 <form action="modificarpreggen.php" method="post">
     <div class="field">
         <div class="control">
@@ -57,6 +59,7 @@ if (isset($_SESSION['user'])) {
     <button class="button is-block is-info is-normal">Enviar</button>
     <button class="button is-link" name="atras">Atras</button>
 </form>
+</div>
 </div>
 </body>
 </html>

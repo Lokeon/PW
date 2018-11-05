@@ -16,6 +16,7 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
             SELECT id_preguntas FROM TIPOENCUESTA WHERE id_tipoencuesta = :tipoen)";
 
         $pregs = getArrayQuery($conexion, $query, array(array(":tipoen"), array($_SESSION['encuesta'])))[0];
+
         if (empty($pregs)) {
             header("location:borrarpreguntas.php");
         }
@@ -34,13 +35,16 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
 <body>
 <div class="container">
 <form action="enviarbopreg.php?index=<?PHP print($_SESSION['encuesta']); ?>" method="post">
+<input type="hidden" name="reps" value="<?PHP print($pregs[0]) ?>"/>
 <div class="field">
   <label class="label">Seleccione Pregunta</label>
   <div class="control">
     <div class="select">
       <select name="pregunta">
-      <?php for ($j = 1; $j < count($pregs) && $pregs[$j] != ""; $j++) {
-        print("<option value='$j-$pregs[$j]'>$pregs[$j]</option>\n");
+      <?php for ($j = 1; $j < count($pregs); $j++) {
+        if ($pregs[$j] != "") {
+            print("<option value='$j-$pregs[$j]'>$pregs[$j]</option>\n");
+        }
     } ?>
       </select>
     </div>

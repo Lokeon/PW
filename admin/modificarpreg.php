@@ -39,8 +39,10 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
   <div class="control">
     <div class="select">
       <select name="pregunta">
-      <?php for ($j = 1; $j < count($pregs) && $pregs[$j] != ""; $j++) {
-        print("<option value='$j'>$pregs[$j]</option>\n");
+      <?php for ($j = 1; $j < count($pregs); $j++) {
+        if ($pregs[$j] != "") {
+            print("<option value='$j'>$pregs[$j]</option>\n");
+        }
     } ?>
       </select>
     </div>

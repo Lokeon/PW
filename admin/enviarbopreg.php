@@ -3,35 +3,32 @@ require "funciones.php";
 $db = include "../config/db.php";
 
 session_start();
-if (isset($_SESSION['user']) && isset($_POST['pregunta'])) {
+if (isset($_SESSION['user']) && isset($_POST['pregunta']) && !empty(($_POST['pregunta']))) {
     try {
         $conexion = new PDO("mysql:host=" . $db['host'] . "; dbname=" . $db['name'], $db['user'], $db['pass']);
         $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $opc = explode('-', $_POST['pregunta']);
 
-        $query = "UPDATE PREGUNTAS SET pregunta" . $opc[0] . " = '' WHERE pregunta" . $opc[0] . " = '{$opc[1]}'";
+        print($_POST['reps']);
 
-        /* Nombre-Sexo-Dia-Mes-Año
-        Nombre--Dia-Mes-Año
-
-        1.- Nombre
-        NS 1 2 3 4 5
-        2.-
-        NS 1 2 3 4 5
-        3.- Dia
-        NS 1 2 3 4 5
-        4.- Año
-        NS 1 2 3 4 5
-         */
+        $query = "UPDATE PREGUNTAS SET pregunta" . $opc[0] . " = '' WHERE id_preguntas
+        IN(SELECT id_tipoencuesta FROM TIPOENCUESTA WHERE id_tipoencuesta = '{$_SESSION['encuesta']}')";
 
         setArrayUpdate($conexion, $query, array(array()));
-        header("location:borrarpreguntas.php");
+
+        $query = "UPDATE RESPUESTAS SET id_pregunta" . $opc[0] . " = 6 WHERE id_respuestas
+        IN (SELECT id_respuestas FROM ENCUESTA WHERE id_tipoencuesta IN(SELECT id_tipoencuesta
+        FROM TIPOENCUESTA WHERE id_tipoencuesta = '{$_SESSION['encuesta']}' and id_preguntas ='{$_POST['reps']}'))";
+
+        setArrayUpdate($conexion, $query, array(array()));
+
+        header("location:borrarpreg.php");
     } catch (Exception $e) {
         exit("error" . $e->getMessage());
     }
 } elseif (isset($_POST['atras'])) {
     unset($_SESSION['encuesta']);
-    header("location:modificarpreguntas.php");
+    header("location:borrarpreguntas.php");
 } else {
     header("location:../login/login.php");
 }

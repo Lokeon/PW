@@ -26,16 +26,19 @@
                                     <input class="input is-large" type="password" placeholder="Contraseña" name="pass">
                                 </div>
                             </div>
+
                             <?php if (isset($_GET['error'])): ?>
-                            <div class="notification is-danger has-text-grey-dark">
-                            <p><strong><?php print($_GET['error']) ?></strong></p>
-                            </div>
+                                <div class="notification is-danger has-text-grey-dark">
+                                    <p><strong><?php print($_GET['error']) ?></strong></p>
+                                </div>
                             <?php endif;if (isset($_GET['warning'])): ?>
-                            <div class="notification is-warning has-text-grey-dark">
-                            <p><strong><?php print($_GET['warning']) ?></strong></p>
-                            </div>
+                                <div class="notification is-warning has-text-grey-dark">
+                                    <p><strong><?php print($_GET['warning']) ?></strong></p>
+                                </div>
                             <?php endif; ?>
                             <button class="button is-block is-info is-large is-fullwidth">Iniciar</button>
+                            <br>
+                            <a class="button is-block is-info is-large is-fullwidth" href="../index.php">Atras</a>
                         </form>
                     </div>
                 </div>

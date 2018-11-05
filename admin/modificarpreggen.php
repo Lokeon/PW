@@ -36,8 +36,12 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
   <div class="control">
     <div class="select">
       <select name="pregunta">
-      <?php for ($j = 1; $j < count($pregs) && $pregs[$j] != ""; $j++) {
-        print("<option value='$j'>$pregs[$j]</option>\n");
+      <?php for ($j = 1; $j < count($pregs); $j++) {
+        if ($pregs[$j] != "") {
+
+            print("<option value='$j'>$pregs[$j]</option>\n");
+        }
+
     } ?>
       </select>
     </div>
@@ -50,7 +54,7 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
     <textarea class="textarea" placeholder="Textarea" name="nuevapreg" ></textarea>
   </div>
 </div>
-<<div class="field">
+<div class="field">
         <div class="control">
             <button class="button is-block is-info is-normal">Enviar</button>
         </div>

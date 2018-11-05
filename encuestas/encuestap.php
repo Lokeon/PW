@@ -26,35 +26,44 @@ if (isset($_SESSION['tipoencuesta'])) {
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/mini-nord.css">
-    <title>Encuesta-Preguntas</title>
-</head>
-<body>
-<div class="container">
-    <div class="row">
-                <form action="validateencuestap.php" method="post" style="margin: auto;">
-                    <fieldset>
-                        <legend><h2>Informacion personal y acádemica</h2></legend>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/bulma.min.css">
+        <title>Preguntas</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="hero-body">
+                <div class="columns">
+                    <form action="validateencuestap.php" method="post">
+                        <h2 class="title">Informacion personal y acádemica</h2>
                         <div class="input-group">
 <?php
 for ($i = 1; $i < count($pregs); ++$i) {
-        print("<div class=\"col-sm-12\">\n<h4> $pregs[$i] </h4>");
-        for ($j = 1; $j < count($opc); ++$j) {
-            print("<label><INPUT TYPE='radio' NAME='radio$i' VALUE='" . ($j - 1) . "'>$opc[$j]</label>");
+        if ($pregs[$i] != '') {
+            print("<div class=\"control\">");
+            print("<label class=\"label\"><b>$pregs[$i]</b></label>");
+
+            for ($j = 1; $j < count($opc); ++$j) {
+                print("<label class=\"radio\"><INPUT TYPE='radio' NAME='radio$i' VALUE='" . ($j - 1) . "'>$opc[$j]</label>");
+            }
+            print("</div>");
+            print("<br>");
+        } else {
+            // TODO
+            print("<label><INPUT TYPE='hidden' NAME='radio$i' VALUE='0'></label>"); /*CAMBIAR EL VALUE PARA QUE NO CAMBIA LAS ENCUESTA*/
         }
-        print("</div>");
     }
-    print("<input type='submit' name='Enviar' value='Enviar' class='rounded primary' />");
+    print("<input type='submit' name='Enviar' value='Enviar' class='button is-link' />");
     ?>
-                    </div>
-                </fieldset>
-            </form>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-    </div>
-  </body>
+    </body>
 </html>
 
 <?PHP

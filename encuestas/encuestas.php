@@ -1,9 +1,11 @@
 <?php
 $db = include "../config/db.php";
+
 try {
     session_start();
     $conexion = new PDO("mysql:host=" . $db['host'] . "; dbname=" . $db['name'], $db['user'], $db['pass']);
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
     if (isset($_SESSION['tipoencuesta'])) {
         $query = "SELECT nombre FROM PROFESOR ";
         $resultado = $conexion->prepare($query);
@@ -23,69 +25,86 @@ try {
     exit("Error: " . $e->getMessage());
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/mini-nord.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="card" style="margin: auto;">
-                <?php if (isset($_SESSION['tipoencuesta'])) { ?>
-                <form action="#" method="post">
-                    <fieldset>
-                        <legend>Seleccione Encuesta</legend>
-                        <div class="input-group">
-                            <label for="profesor">Profesor</label>
-                            <select id="profesor" style="width:100%;" name="profesor">
-                                <?php foreach ($prof as $p) {print("<option>" . $p[0] . "</option>\n");} ?>
-                            </select>
-                            <label for="asignatura">Asignatura</label>
-                            <select id="asignatura" style="width:100%;" name="asignatura">
-                                <?php foreach ($asig as $a) {print("<option>" . $a[0] . "</option>\n");} ?>
-                            </select>
-                            <input type="submit" value="Empezar" class="primary rounded" name="empezar" />
-                            <input type="submit" value="Atras" class="primary rounded" name="atras" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../static/bulma.min.css">
+        <title>Selección de Encuesta</title>
+    </head>
+
+    <body>
+        <div calss="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <?php if (isset($_SESSION['tipoencuesta'])) { ?>
+                    <form action="#" method="post">
+                        <fieldset>
+                            <h3 class="title has-text-centered has-text-grey">Seleccione Encuesta</h3>
+                                <div class="field">
+                                    <label class="label">Profesor</label>
+                                    <div class="control">
+                                        <div class="select">
+                                            <select id="profesor" name="profesor">
+                                                <?php foreach ($prof as $p) {print("<option>" . $p[0] . "</option>\n");} ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <label class="label">Asignatura</label>
+                                    <div class="control">
+                                        <div class="select">
+                                            <select id="asignatura" name="asignatura">
+                                                <?php foreach ($asig as $a) {print("<option>" . $a[0] . "</option>\n");} ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Empezar" class="button is-link" name="empezar" />
+                                    <input type="submit" value="Atras" class="button is-link" name="atras" />
+                                </div>
+                        </fieldset>
+                    </form>
+
+                    <?php if (isset($_GET['error'])): ?>
+                        <div class="card error">
+                            <p><span class="icon-alert"></span>
+                                <?php print($_GET['error']) ?>
+                            </p>
                         </div>
-                    </fieldset>
-                </form>
-                <?php if (isset($_GET['error'])): ?>
-                <div class="card error">
-                    <p><span class="icon-alert"></span>
-                        <?php print($_GET['error']) ?>
-                    </p>
-                </div>
-                <?php endif; ?>
-                <?php } else { ?>
-                <form action="#" method="post">
-                    <fieldset>
-                        <legend>Seleccione Ciudad</legend>
-                        <div class="input-group">
-                            <label for="ciudad">Ciudad</label>
-                            <select id="ciudad" style="width:100%;" name="ciudad">
-                                <?php foreach ($ciudades as $c) {print("<option>" . $c[0] . "</option>\n");} ?>
-                            </select>
-                            <input type="submit" value="Empezar" class="primary rounded" name="encuesta" />
+                    <?php endif; ?>
+                    <?php } else { ?>
+                    <form action="#" method="post">
+                        <fieldset>
+                            <h3 class="title has-text-centered has-text-grey">Seleccione Ciudad</h3>
+                                <div class="field">
+                                    <label class="label">Ciudad</label>
+                                    <div class="control">
+                                        <div class="select">
+                                            <select id="ciudad" name="ciudad">
+                                                <?php foreach ($ciudades as $c) {print("<option>" . $c[0] . "</option>\n");} ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Siguiente" class="primary rounded" name="encuesta" />
+                        </fieldset>
+                    </form>
+                        <?php if (isset($_GET['error'])): ?>
+                        <div class="card warning">
+                            <p>
+                                <span class="icon-alert"></span>
+                                <?php print($_GET['error']) ?>
+                            </p>
                         </div>
-                    </fieldset>
-                </form>
-                <?php if (isset($_GET['error'])): ?>
-                <div class="card warning">
-                    <p><span class="icon-alert"></span>
-                        <?php print($_GET['error']) ?>
-                    </p>
+                        <?php endif; ?>
+                        <?php } ?>
                 </div>
-                <?php endif; ?>
-                <?php } ?>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
+
 <?php
 if (isset($_POST['atras'])) {
     session_destroy();

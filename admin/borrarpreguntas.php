@@ -1,9 +1,8 @@
 <?php
-
 require "funciones.php";
 $db = include "../config/db.php";
-
 session_start();
+
 if (isset($_SESSION['user'])) {
     try {
         $conexion = new PDO("mysql:host=" . $db['host'] . "; dbname=" . $db['name'], $db['user'], $db['pass']);
@@ -15,6 +14,7 @@ if (isset($_SESSION['user'])) {
         exit("error" . $e->getMessage());
     }
     ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -23,18 +23,20 @@ if (isset($_SESSION['user'])) {
     <link rel="stylesheet" href="../static/bulma.min.css">
     <title>Borrar Preguntas</title>
 </head>
+
 <body>
-<div class="container">
-<table class="hoverable">
-  <caption>Borrar Preguntas</caption>
-  <thead>
-    <tr>
-      <th>Tipo De Encuesta</th>
-      <th>Preguntas</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php for ($i = 0; $i < count($tipos); $i++) {
+    <div class="hero-body">
+        <div class="container">
+            <table class="hoverable">
+            <h2 class="title">Borrar Preguntas</h2>
+            <thead>
+                <tr>
+                <th>Tipo De Encuesta</th>
+                <th>Preguntas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php for ($i = 0; $i < count($tipos); $i++) {
         print("<tr>");
         print("<td data-label=\"Tipo Encuesta\">{$tipos[$i][count($tipos[$i]) - 1]}</td>");
         print("<td data-label=\"Preguntas\">");
@@ -46,26 +48,27 @@ if (isset($_SESSION['user'])) {
         }
         print("</ol></td></tr>");
     } ?>
-  </tbody>
-</table>
-<form action="borrarpreg.php" method="post">
-    <div class="field">
-        <div class="control">
-            <input class="input is-normal" type="text" placeholder="Ingrese Tipo Encuesta" autofocus="" name="encuesta">
+            </tbody>
+            </table>
+        <form action="borrarpreg.php" method="post">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-normal" type="text" placeholder="Ingrese Tipo Encuesta" autofocus="" name="encuesta">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-block is-info is-normal">Enviar</button>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-block is-info is-normal" name="atras">Atras</button>
+                </div>
+            </div>
+        </form>
         </div>
     </div>
-    <div class="field">
-        <div class="control">
-            <button class="button is-block is-info is-normal">Enviar</button>
-        </div>
-    </div>
-    <div class="field">
-        <div class="control">
-            <button class="button is-block is-info is-normal" name="atras">Atras</button>
-        </div>
-    </div>
-</form>
-</div>
 </body>
 </html>
 <?php
