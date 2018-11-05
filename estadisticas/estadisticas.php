@@ -78,6 +78,7 @@ if (isset($_SESSION['encuesta'])) {
 </div>
 </section>
     <script src="../static/Chart.bundle.min.js"></script>
+    <script src="../static/chartjs-plugin-annotation.min.js"></script>
     <?php if (isset($_POST['filtro'])) {include "scripts.php";} ?>
 </body>
 

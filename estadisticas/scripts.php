@@ -34,7 +34,7 @@
                 type: 'line',
                 mode: 'horizontal',
                 scaleID: 'y-axis-0',
-                value: 2,
+                value: <?php print(mediaArray(getRespuestaPreguntaX($respuestas, $i))); ?>,
                 borderColor: 'rgb(75, 192, 192)',
                 borderWidth: 2,
                 label: {

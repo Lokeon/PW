@@ -125,3 +125,11 @@ function comprobarPOST()
     }
     return $marcados;
 }
+
+function mediaArray($array)
+{
+    foreach ($array as $a) {
+        $sum += $a;
+    }
+    return $sum / count($array);
+}
