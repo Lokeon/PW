@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="./static/bulma.min.css">
-      <title>Encuestas</title>
-  </head>
-
+<?php $title = "Encuestas";include "./template/head.php" ?>
   <body>
     <section class="hero is-info is-medium is-bold">
       <div class="hero-body">

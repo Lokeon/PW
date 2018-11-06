@@ -1,16 +1,7 @@
 <?php
 session_start();
+$title = "Fin Insertar Preguntas";include "../template/head.php"
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Fin Insert Preguntas</title>
-</head>
-
 <body>
     <div class="hero-body">
         <div class="container">
@@ -25,7 +16,7 @@ session_start();
     <script>
         setTimeout(function () {
         window.location.href= 'admin.php';
-        }, 2000);
+        }, 8000);
     </script>
 </body>
 </html>

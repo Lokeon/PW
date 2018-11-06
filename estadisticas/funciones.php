@@ -128,6 +128,7 @@ function comprobarPOST()
 
 function mediaArray($array)
 {
+    $sum = 0;
     foreach ($array as $a) {
         $sum += $a;
     }

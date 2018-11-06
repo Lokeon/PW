@@ -1,5 +1,5 @@
 <?php for ($i = 0; $i < count($respuestas[0]); $i++): ?>
-    <div class="column is-6">
+    <div class="column is-6" style="display:block">
         <div class="panel">
             <p class="panel-heading">
             <?php printf("Pregunta %d", $i + 1); ?>

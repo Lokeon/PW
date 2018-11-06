@@ -24,87 +24,79 @@ try {
 } catch (Exception $e) {
     exit("Error: " . $e->getMessage());
 }
+$title = "Selección de Encuesta";include "../template/head.php"
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../static/bulma.min.css">
-        <title>Selección de Encuesta</title>
-    </head>
-
-    <body>
-        <div calss="hero-body">
-            <div class="container has-text-centered">
-                <div class="column is-4 is-offset-4">
-                    <?php if (isset($_SESSION['tipoencuesta'])) { ?>
-                    <form action="#" method="post">
-                        <div class="box">
-                            <h3 class="title has-text-centered has-text-grey">Seleccione Encuesta</h3>
-                                <div class="field">
-                                    <label class="label">Profesor</label>
-                                    <div class="control has-text-centered">
-                                        <div class="select">
-                                            <select id="profesor" name="profesor">
-                                                <?php foreach ($prof as $p) {print("<option>" . $p[0] . "</option>\n");} ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <label class="label">Asignatura</label>
-                                    <div class="control has-text-centered">
-                                        <div class="select">
-                                            <select id="asignatura" name="asignatura">
-                                                <?php foreach ($asig as $a) {print("<option>" . $a[0] . "</option>\n");} ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <input type="submit" value="Atras" class="button is-link" name="atras" />
-                                    <input type="submit" value="Empezar" class="button is-link" name="empezar" />
-                                </div>
-                        </div>
-                    </form>
-
-                    <?php if (isset($_GET['error'])): ?>
-                        <div class="card error">
-                            <p><span class="icon-alert"></span>
-                                <?php print($_GET['error']) ?>
-                            </p>
-                        </div>
-                    <?php endif; ?>
-                    <?php } else { ?>
-                    <form action="#" method="post">
-                        <div class="box">
-                            <h3 class="title has-text-centered has-text-grey">Seleccione Ciudad</h3>
-                                <div class="field">
-                                    <label class="label">Ciudad</label>
-                                    <div class="control has-text-centered">
-                                        <div class="select">
-                                            <select id="ciudad" name="ciudad">
-                                                <?php foreach ($ciudades as $c) {print("<option>" . $c[0] . "</option>\n");} ?>
-                                            </select>
-                                        </div>
+<body>
+    <div calss="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <?php if (isset($_SESSION['tipoencuesta'])) { ?>
+                <form action="#" method="post">
+                    <div class="box">
+                        <h3 class="title has-text-centered has-text-grey">Seleccione Encuesta</h3>
+                            <div class="field">
+                                <label class="label">Profesor</label>
+                                <div class="control has-text-centered">
+                                    <div class="select">
+                                        <select id="profesor" name="profesor">
+                                            <?php foreach ($prof as $p) {print("<option>" . $p[0] . "</option>\n");} ?>
+                                        </select>
                                     </div>
                                 </div>
-                                <a class="button is-link" href="../index.php"><b>Atras</b></a>
-                                <input type="submit" value="Siguiente" class="button is-link" name="encuesta"/>
-                        </div>
-                    </form>
-                        <?php if (isset($_GET['error'])): ?>
-                        <div class="card warning">
-                            <p>
-                                <span class="icon-alert"></span>
-                                <?php print($_GET['error']) ?>
-                            </p>
-                        </div>
-                        <?php endif; ?>
-                        <?php } ?>
-                </div>
+                                <label class="label">Asignatura</label>
+                                <div class="control has-text-centered">
+                                    <div class="select">
+                                        <select id="asignatura" name="asignatura">
+                                            <?php foreach ($asig as $a) {print("<option>" . $a[0] . "</option>\n");} ?>
+                                        </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <?php if (isset($_GET['error'])): ?>
+                                <div class="control has-text-centered">
+                                    <div class="notification is-danger has-text-grey-dark">
+                                        <p><?php print($_GET['error']) ?></p>
+                                    </div>
+                                </div>
+                                <br>
+                                <?php endif; ?>
+                                <input type="submit" value="Atras" class="button is-link" name="atras" />
+                                <input type="submit" value="Empezar" class="button is-link" name="empezar" />
+                            </div>
+                    </div>
+                </form>
+                <?php } else { ?>
+                <form action="#" method="post">
+                    <div class="box">
+                        <h3 class="title has-text-centered has-text-grey">Seleccione Ciudad</h3>
+                            <div class="field">
+                                <label class="label">Ciudad</label>
+                                <div class="control has-text-centered">
+                                    <div class="select">
+                                        <select id="ciudad" name="ciudad">
+                                            <?php foreach ($ciudades as $c) {print("<option>" . $c[0] . "</option>\n");} ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                                <?php if (isset($_GET['error'])): ?>
+                                <div class="control has-text-centered">
+                                <div class="notification is-danger has-text-grey-dark">
+                                <p><?php print($_GET['error']) ?></p>
+                                </div>
+                                </div>
+                                <br>
+                                <?php endif; ?>
+                            <a class="button is-link" href="../index.php"><b>Atras</b></a>
+                            <input type="submit" value="Siguiente" class="button is-link" name="encuesta"/>
+                    </div>
+                </form>
+                <?php } ?>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>
 
 <?php

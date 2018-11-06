@@ -1,12 +1,5 @@
 <?php session_start();if (!isset($_SESSION['user'])): ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../static/bulma.min.css">
-  <title>Login</title>
-</head>
+<?php $title = "Login";include "../template/head.php" ?>
 <body>
 <section class="hero has-background-light is-fullheight">
         <div class="hero-body">

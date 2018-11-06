@@ -1,8 +1,6 @@
 <?php
-
 require "funciones.php";
 $db = include "../config/db.php";
-
 session_start();
 if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
     if (isset($_POST['encuesta'])) {
@@ -19,53 +17,41 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
     } catch (Exception $e) {
         exit("error" . $e->getMessage());
     }
+    $title = "Modificar Preguntas Generales";include "../template/head.php"
     ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Modificar Preguntas Generales</title>
-</head>
 <body>
-<div class="container">
-<form action="enviarpreggen.php?index=<?php print($_SESSION['encuesta']); ?>" method="post">
-<div class="field">
-  <label class="label">Seleccione Pregunta</label>
-  <div class="control">
-    <div class="select">
-      <select name="pregunta">
-      <?php for ($j = 1; $j < count($pregs); $j++) {
+    <div class="container">
+        <div class="hero-body">
+            <form action="enviarpreggen.php?index=<?php print($_SESSION['encuesta']); ?>" method="post">
+                <div class="field">
+                    <label class="label">Seleccione Pregunta</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="pregunta">
+                                <?php for ($j = 1; $j < count($pregs); $j++) {
         if ($pregs[$j] != "") {
-
             print("<option value='$j'>$pregs[$j]</option>\n");
         }
-
     } ?>
-      </select>
-    </div>
-  </div>
-</div>
-
-<div class="field">
-  <label class="label">Nueva pregunta</label>
-  <div class="control">
-    <textarea class="textarea" placeholder="Textarea" name="nuevapreg" ></textarea>
-  </div>
-</div>
-<div class="field">
-        <div class="control">
-            <button class="button is-block is-info is-normal">Enviar</button>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Nueva pregunta</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Textarea" name="nuevapreg" ></textarea>
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link" name="atras">Atras</button>
+                        <button class="button is-link">Enviar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="field">
-        <div class="control">
-            <button class="button is-block is-info is-normal" name="atras">Atras</button>
-        </div>
-    </div>
-</form>
-</div>
 </body>
 </html>
 <?php

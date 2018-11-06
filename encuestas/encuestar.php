@@ -14,17 +14,8 @@ if (isset($_SESSION['tipoencuesta'])) {
     } catch (Exception $e) {
         exit("Error: " . $e->getMessage());
     }
+    $title = "Preguntas Personales";include "../template/head.php"
     ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Preguntas Personales</title>
-</head>
-
 <body>
     <div class="container">
         <div class="hero-body">

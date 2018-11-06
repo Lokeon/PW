@@ -16,29 +16,21 @@ if (isset($_SESSION['user'])) {
     } catch (Exception $e) {
         exit("error" . $e->getMessage());
     }
+    $title = "Modificar Preguntas Personales";include "../template/head.php"
     ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Modificar Preguntas Personales</title>
-</head>
 <body>
-<div class="hero-body">
-    <div class="container">
-        <table class="hoverable">
-            <h2 class="title">Modificar Preguntas Personales</h2>
-            <thead>
-                <tr>
-                <th>Tipo De Encuesta</th>
-                <th>Preguntas Generales</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php for ($i = 0; $i < count($tipos); $i++) {
+    <div class="hero-body">
+        <div class="container">
+            <table class="hoverable">
+                <h2 class="title">Modificar Preguntas Personales</h2>
+                <thead>
+                    <tr>
+                        <th>Tipo De Encuesta</th>
+                        <th>Preguntas Generales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php for ($i = 0; $i < count($tipos); $i++) {
         print("<tr>");
         print("<td data-label=\"Tipo Encuesta\">{$tipos[$i][count($tipos[$i]) - 1]}</td>");
         print("<td data-label=\"Preguntas Generales\">");
@@ -48,19 +40,23 @@ if (isset($_SESSION['user'])) {
         }
         print("</ol></td></tr>");
     } ?>
-            </tbody>
-        </table>
-<form action="modificarpreggen.php" method="post">
-    <div class="field">
-        <div class="control">
-            <input class="input is-normal" type="text" placeholder="Ingrese Tipo Encuesta" autofocus="" name="encuesta">
+                </tbody>
+            </table>
+            <form action="modificarpreggen.php" method="post">
+                <div class="field">
+                    <div class="control">
+                        <input class="input is-normal" type="text" placeholder="Ingrese Tipo Encuesta" autofocus="" name="encuesta">
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button is-link" name="atras">Atras</button>
+                        <button class="button is-link">Enviar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
-    <button class="button is-block is-info is-normal">Enviar</button>
-    <button class="button is-link" name="atras">Atras</button>
-</form>
-</div>
-</div>
 </body>
 </html>
 <?php

@@ -1,17 +1,8 @@
 <?php
 session_start();
 session_destroy();
+$title = "Fin Encuesta";include "../template/head.php"
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Fin Encuesta</title>
-</head>
-
 <body>
     <div class="hero-body">
         <div class="container">
@@ -24,7 +15,6 @@ session_destroy();
             </div>
         </div>
     </div>
-
     <script>
         setTimeout(function () {
         window.location.href= '../index.php';

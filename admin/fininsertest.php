@@ -1,16 +1,7 @@
 <?php
 session_start();
+$title = "Fin Insertar Estudios";include "../template/head.php"
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Fin Insert Estudios</title>
-</head>
-
 <body>
     <div class="hero-body">
         <div class="container">

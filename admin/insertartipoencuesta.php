@@ -1,8 +1,6 @@
 <?php
-
 require "funciones.php";
 $db = include "../config/db.php";
-
 session_start();
 if (isset($_SESSION['user'])) {
     try {
@@ -19,26 +17,20 @@ if (isset($_SESSION['user'])) {
     } catch (Exception $e) {
         exit("error" . $e->getMessage());
     }
+    $title = "Insertar Tipo Encuesta";include "../template/head.php"
     ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Insertar TipoEncuesta </title>
-</head>
 <body>
-<div class="container">
-<table class="hoverable">
-  <thead>
-    <tr>
-      <th>Id Preguntas</th>
-      <th>Preguntas</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php for ($i = 0; $i < count($pregs); $i++) {
+  <div class="container">
+    <div class="hero-body">
+      <table class="hoverable">
+        <thead>
+          <tr>
+            <th>Id Preguntas</th>
+            <th>Preguntas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php for ($i = 0; $i < count($pregs); $i++) {
         print("<tr>");
         print("<td data-label=\"Id Preguntas\">{$pregs[$i][0]}</td>");
         print("<td data-label=\"Preguntas\">");
@@ -50,17 +42,18 @@ if (isset($_SESSION['user'])) {
         }
         print("</ol></td></tr>");
     } ?>
-  </tbody>
-</table>
-<table class="hoverable">
-  <thead>
-    <tr>
-      <th>Id Opciones</th>
-      <th>Opciones</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php for ($i = 0; $i < count($opc); $i++) {
+        </tbody>
+      </table>
+      <br>
+      <table class="hoverable">
+        <thead>
+          <tr>
+            <th>Id Opciones</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php for ($i = 0; $i < count($opc); $i++) {
         print("<tr>");
         print("<td data-label=\"Id Opciones\">{$opc[$i][0]}</td>");
         print("<td data-label=\"Opciones\">");
@@ -72,17 +65,18 @@ if (isset($_SESSION['user'])) {
         }
         print("</ol></td></tr>");
     } ?>
-  </tbody>
-</table>
-<table class="hoverable">
-  <thead>
-    <tr>
-      <th>Id Preguntas Generales</th>
-      <th>Preguntas Generales</th>
-    </tr>
-  </thead>
-  <tbody>
-    <?php for ($i = 0; $i < count($pregsgen); $i++) {
+        </tbody>
+      </table>
+      <br>
+      <table class="hoverable">
+        <thead>
+          <tr>
+            <th>Id Preguntas Generales</th>
+            <th>Preguntas Generales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php for ($i = 0; $i < count($pregsgen); $i++) {
         print("<tr>");
         print("<td data-label=\"Id Preguntas Generales\">{$pregsgen[$i][0]}</td>");
         print("<td data-label=\"Preguntas\">");
@@ -94,27 +88,29 @@ if (isset($_SESSION['user'])) {
         }
         print("</ol></td></tr>");
     } ?>
-  </tbody>
-</table>
-<form action="inserttipo.php" method="post">
-<div class="field">
-  <label class="label">Introduzca Id Preguntas , Id Preguntas Genereales y Id Opciones  </label>
-</div>
-<?php for ($i = 1; $i < 4; $i++): ?>
-<div class="control">
-<label>Id <?PHP print($i); ?></label>
-<input type="text" class="input is-primary" name='<?PHP printf("id%d", $i); ?>'></textarea>
-</div>
-<?PHP endfor; ?>
-<div class="field is-grouped">
-  <div class="control">
-
-    <button class="button is-link" name="aceptar">Aceptar</button>
-    <button class="button is-link" name="atras">Atras</button>
+        </tbody>
+      </table>
+      <form action="inserttipo.php" method="post">
+        <div class="field">
+          <br>
+          <label class="label">Introduzca Id Preguntas , Id Preguntas Genereales e Id Opciones  </label>
+        </div>
+        <?php for ($i = 1; $i < 4; $i++): ?>
+          <div class="control">
+            <label>Id <?PHP print($i); ?></label>
+            <input type="text" class="input is-normal" name='<?PHP printf("id%d", $i); ?>'></textarea>
+          </div>
+        <?PHP endfor; ?>
+        <div class="field is-grouped">
+          <div class="control">
+            <br>
+            <button class="button is-link" name="atras">Atras</button>
+            <button class="button is-link" name="aceptar">Aceptar</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
-</form>
-</div>
 </body>
 </html>
 <?php

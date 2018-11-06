@@ -1,3 +1,5 @@
+<script src="../static/Chart.bundle.min.js"></script>
+<script src="../static/chartjs-plugin-annotation.min.js"></script>
 <?php for ($i = 0; $i < count($respuestas[0]); $i++): ?>
 <script>
     var ctx = document.getElementById("<?php printf("pregunta%d", $i + 1); ?>");

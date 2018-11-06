@@ -22,15 +22,8 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
     } catch (Exception $e) {
         exit("error" . $e->getMessage());
     }
+    $title = "Modificar Preguntas";include "../template/head.php"
     ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../static/bulma.min.css">
-    <title>Modificar Preguntas</title>
-</head>
 <body>
 <div class="container">
 <form action="enviarpreg.php?index=<?php print($_SESSION['encuesta']); ?>" method="post">
@@ -57,8 +50,8 @@ if (isset($_SESSION['user']) && !isset($_POST['atras'])) {
 </div>
 <div class="field is-grouped">
   <div class="control">
-    <button class="button is-link" name="aceptar">Aceptar</button>
     <button class="button is-link" name="atras">Atras</button>
+    <button class="button is-link" name="aceptar">Enviar</button>
   </div>
 </div>
 </form>

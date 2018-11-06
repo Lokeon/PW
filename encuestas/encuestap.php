@@ -22,26 +22,16 @@ if (isset($_SESSION['tipoencuesta'])) {
     } catch (Exception $e) {
         exit("Error: " . $e->getMessage());
     }
+    $title = "Preguntas";include "../template/head.php"
     ?>
-
-<!DOCTYPE html>
-<html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../static/bulma.min.css">
-        <title>Preguntas</title>
-    </head>
-
-    <body>
-        <div class="container">
-            <div class="hero-body">
-                <div class="columns">
-                    <form action="validateencuestap.php" method="post">
-                        <h2 class="title">Informacion personal y acádemica</h2>
-                        <div class="input-group">
-<?php
-for ($i = 1; $i < count($pregs); ++$i) {
+<body>
+    <div class="container">
+        <div class="hero-body">
+            <div class="columns">
+                <form action="validateencuestap.php" method="post">
+                    <h2 class="title">Informacion personal y acádemica</h2>
+                    <div class="input-group">
+<?php for ($i = 1; $i < count($pregs); ++$i) {
         if ($pregs[$i] != '') {
             print("<div class=\"control\">");
             print("<label class=\"label\"><b>$pregs[$i]</b></label>");
@@ -52,7 +42,6 @@ for ($i = 1; $i < count($pregs); ++$i) {
             print("</div>");
             print("<br>");
         } else {
-            // TODO
             print("<label><INPUT TYPE='hidden' NAME='radio$i' VALUE='0'></label>"); /*CAMBIAR EL VALUE PARA QUE NO CAMBIA LAS ENCUESTA*/
         }
     }
